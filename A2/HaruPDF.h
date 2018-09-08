@@ -1,3 +1,11 @@
+/*
+Caleb Edwards
+CS 3505
+A2
+*/
+
+#include "hpdf.h"
+
 class HaruPDF{
 
 private:
@@ -5,11 +13,12 @@ private:
   HPDF_Page page;
   char fname[256];
   HPDF_Font font;
-  float angle2;
-  float rad1;
-  float rad2;
-  unsigned int i;
+
 
 public:
   HaruPDF();
+
+  void savePDF();
+
+  void placeText(const char* ch, float x, float y, float rad1, float rad2);
 };

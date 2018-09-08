@@ -1,3 +1,9 @@
+/*
+Caleb Edwards
+CS 3505
+A2
+*/
+
 class Spiral{
 
 private:
