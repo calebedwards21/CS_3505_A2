@@ -43,13 +43,13 @@ void HaruPDF:: savePDF(){
   /*
   * This code will place the text in the PDF Doc
   */
-void HaruPDF::placeText(const char* ch, float x, float y, float rad1, float rad2){
+void HaruPDF::placeText(const char* ch, float x, float y, float textAngle, double radius){
     // This ugly function defines where any following text will be placed
     // on the page. The cos/sin stuff is actually defining a 2D rotation
     // matrix.
     HPDF_Page_SetTextMatrix(page,
-                            cos(rad1), sin(rad1), -sin(rad1), cos(rad1),
-                            x, y);
+                            cos(textAngle), sin(textAngle), -sin(textAngle), cos(textAngle),
+                            radius*x, radius*y);
 
     HPDF_Page_ShowText (page, ch);
 }

@@ -20,5 +20,5 @@ public:
 
   void savePDF();
 
-  void placeText(const char* ch, float x, float y, float rad1, float rad2);
+  void placeText(const char* ch, float x, float y, float rad, double radius);
 };
