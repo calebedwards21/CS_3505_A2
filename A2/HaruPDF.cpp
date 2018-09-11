@@ -5,17 +5,19 @@ A2
 */
 
 #include "HaruPDF.h"
-#include <string>
+#include <string.h>
 #include <iostream>
 #include <cmath>
+#include <stdlib.h>
+#include <stdio.h>
 
 
-HaruPDF :: HaruPDF(){
+HaruPDF :: HaruPDF(char **fileName){
   // argv are the command line arguments
   // argv[0] is the name of the executable program
   // This makes an output pdf named after the program's name
-  // strcpy (fname, argv[0]); Do I need this?
-  //strcat (fname, ".pdf");
+  strcpy (fname, fileName);
+  strcat (fname, ".pdf");
 
   pdf = HPDF_New (NULL, NULL);
   /* add a new page object. */
@@ -51,5 +53,7 @@ void HaruPDF::placeText(const char* ch, float x, float y, float textAngle, doubl
                             cos(textAngle), sin(textAngle), -sin(textAngle), cos(textAngle),
                             x, y);
 
-    HPDF_Page_ShowText (page, ch);
+    char buf[2] = {*ch, 0};
+
+    HPDF_Page_ShowText (page, buf);
 }

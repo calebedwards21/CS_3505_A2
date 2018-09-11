@@ -16,7 +16,7 @@ private:
 
 
 public:
-  HaruPDF();
+  HaruPDF(char**);
 
   void savePDF();
 

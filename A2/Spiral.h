@@ -8,7 +8,7 @@ class Spiral{
 
 private:
   double _centerX, _centerY, _radius, _degrees, _textX, _textY, _textAngle, _angleAroundCircle;
-  float _rad1, _rad2, _x, _y, _angle2;
+  float _dAlpha, _dRadius, _alpha, _arcLength, _fontWidth;
   char buf[2];
 
 public:
