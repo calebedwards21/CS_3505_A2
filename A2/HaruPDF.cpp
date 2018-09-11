@@ -38,6 +38,9 @@ void HaruPDF:: savePDF(){
     HPDF_Page_EndText (page);
     /* save the document to a file */
     HPDF_SaveToFile (pdf, fname);
+
+    /* clean up */
+    HPDF_Free (pdf);
 }
 
 

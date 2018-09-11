@@ -40,7 +40,7 @@ public:
 
   friend std::ostream& operator<<(std::ostream&, Spiral);
 
-  friend Spiral& operator++(Spiral&);
+  friend void operator++(Spiral&);
 
   // An overloaded ostream << function which reports in a nicely formatted way the state
   //(such as angle and radius) of a Spiral object. Rely on users of this function to provide

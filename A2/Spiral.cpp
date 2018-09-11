@@ -60,17 +60,17 @@ void Spiral::increment(){
   _textAngle = -_alpha;
 }
 
-Spiral& operator++(Spiral& spiral){
-  // _dAlpha  = _arcLength/_radius;
-  // _textX = _centerX + _radius*cos(-_alpha + pi/2);
-  // _textY = _centerY + _radius*sin(-_alpha + pi/2);
-  //
-  // _radius += 1;
-  // _alpha += _dAlpha;
-  // _textAngle = -_alpha;
+void operator++(Spiral& spiral){
 
-  return spiral;
+    spiral._dAlpha  = spiral._arcLength/spiral._radius;
+    spiral._textX = spiral._centerX + spiral._radius*cos(-spiral._alpha + M_PI/2);
+    spiral._textY = spiral._centerY + spiral._radius*sin(-spiral._alpha + M_PI/2);
+
+    spiral._radius += 1;
+    spiral._alpha += spiral._dAlpha;
+    spiral._textAngle = -spiral._alpha;
 }
+
 
 std::ostream& operator<<(std::ostream& output, Spiral spiral){
 

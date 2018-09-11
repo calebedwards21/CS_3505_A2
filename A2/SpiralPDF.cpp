@@ -29,8 +29,7 @@ int main(int argc, char **argv){
   for(int i = 0; i < strlen(chars); i++){
 
     buf = chars[i];
-    //spiral++;
-    spiral.increment();
+    ++spiral;
     haru.placeText(&buf, spiral.getTextX(), spiral.getTextY(), spiral.getTextAngle(), spiral.getTextRadius());
   }
 
