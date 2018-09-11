@@ -18,7 +18,7 @@ int main(int argc, char **argv){
   }
 
   // Create both objects from classes
-  Spiral spiral(210, 300, -39, 0);
+  Spiral spiral(210, 300, 90, 0);
   HaruPDF haru(argv);
 
   // Create string to hold input
@@ -29,7 +29,7 @@ int main(int argc, char **argv){
   for(int i = 0; i < strlen(chars); i++){
 
     buf = chars[i];
-    ++spiral;
+    spiral++;
     haru.placeText(&buf, spiral.getTextX(), spiral.getTextY(), spiral.getTextAngle(), spiral.getTextRadius());
   }
 
