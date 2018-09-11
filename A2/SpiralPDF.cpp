@@ -7,22 +7,29 @@ A2
 #include "Spiral.h"
 #include "HaruPDF.h"
 #include <iostream>
-#include <cmath>
+#include <string.h>
 
 int main(int argc, char **argv){
 
-  // Create both objects from classes
-  Spiral spiral(210, 300, 90, 0);
-  HaruPDF haru(argv);
+  // Check for text provided
+  if(argc < 2){
+    std::cout << "No text was provided" << std::endl;
+    return 0;
+  }
 
-  char input[1024] = "Hello World Again and Again and Again and agian and agian and aigna and agian";
+  // Create both objects from classes
+  Spiral spiral(210, 300, -39, 0);
+  HaruPDF haru(argv);
 
   // Create string to hold input
   char buf;
+  const char* chars = argv[1];
 
   // Loop through the input
-  for(int i = 0; i < argc; i++){
-    buf = input[i];
+  for(int i = 0; i < strlen(chars); i++){
+
+    buf = chars[i];
+    //spiral++;
     spiral.increment();
     haru.placeText(&buf, spiral.getTextX(), spiral.getTextY(), spiral.getTextAngle(), spiral.getTextRadius());
   }

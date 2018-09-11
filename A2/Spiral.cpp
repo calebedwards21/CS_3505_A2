@@ -5,20 +5,31 @@ A2
 */
 
 #include "Spiral.h"
-#include <iostream>
 #include <cmath>
 
 Spiral::Spiral(double centerX, double centerY, double radius, double degrees){
+
+  // Check initial params
+  _radius = radius;
+  if(_radius < 0){
+    _radius = _radius * -1;
+    std::cout << "Changed your radius to be positive" << std::endl;
+  }
+
+  if(_radius < 40){
+    _radius = 40;
+    std::cout << "Changed your radius to 40. This is the minimun value allowed" << std::endl;
+  }
+
   _centerX = centerX;
   _centerY = centerY;
-  _radius = radius;
   _degrees = degrees;
   _textX = 0;
   _textY = 0;
   _textAngle = 0;
   _fontWidth = 30;
   _dRadius = 0;
-  _alpha = 0;
+  _alpha = degrees;
   _arcLength = _fontWidth * 0.6;
 }
 
@@ -35,22 +46,37 @@ double Spiral::getTextRadius(){
 }
 
 double Spiral::getTextAngle(){
-  return _textAngle;
+  return _textAngle * 180/M_PI;
 }
 
 void Spiral::increment(){
 
-  const float pi = 3.14159;
-
   _dAlpha  = _arcLength/_radius;
-  _textX = _centerX + _radius*cos(-_alpha + pi/2);
-  _textY = _centerY + _radius*sin(-_alpha + pi/2);
+  _textX = _centerX + _radius*cos(-_alpha + M_PI/2);
+  _textY = _centerY + _radius*sin(-_alpha + M_PI/2);
 
   _radius += 1;
   _alpha += _dAlpha;
   _textAngle = -_alpha;
 }
 
-// Spiral operator++(int t) const{
-//   return *this;
-// }
+Spiral& operator++(Spiral& spiral){
+  // _dAlpha  = _arcLength/_radius;
+  // _textX = _centerX + _radius*cos(-_alpha + pi/2);
+  // _textY = _centerY + _radius*sin(-_alpha + pi/2);
+  //
+  // _radius += 1;
+  // _alpha += _dAlpha;
+  // _textAngle = -_alpha;
+
+  return spiral;
+}
+
+std::ostream& operator<<(std::ostream& output, Spiral spiral){
+
+  output<<"X Position : " << spiral.getTextX() << std::endl;
+  output<<"Y Position : " << spiral.getTextY() << std::endl;
+  output<<"Radius : " << spiral.getTextRadius() << std::endl;
+  output<<"Text Angle : " << spiral.getTextAngle();
+  return output;
+}

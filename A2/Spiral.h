@@ -3,12 +3,13 @@ Caleb Edwards
 CS 3505
 A2
 */
+#include<iostream>
+#include<fstream>
 
 class Spiral{
 
 private:
-  double _centerX, _centerY, _radius, _degrees, _textX, _textY, _textAngle, _angleAroundCircle;
-  float _dAlpha, _dRadius, _alpha, _arcLength, _fontWidth;
+  double _centerX, _centerY, _radius, _degrees, _textX, _textY, _textAngle, _dAlpha, _dRadius, _alpha, _arcLength, _fontWidth;
   char buf[2];
 
 public:
@@ -36,6 +37,10 @@ public:
   double getTextAngle();
 
   void placeText(double x, double y, double degrees);
+
+  friend std::ostream& operator<<(std::ostream&, Spiral);
+
+  friend Spiral& operator++(Spiral&);
 
   // An overloaded ostream << function which reports in a nicely formatted way the state
   //(such as angle and radius) of a Spiral object. Rely on users of this function to provide
