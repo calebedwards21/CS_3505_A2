@@ -27,7 +27,7 @@ HaruPDF :: HaruPDF(){
   HPDF_Page_SetGrayStroke (page, 0);
 
   HPDF_Page_BeginText (page);
-  HPDF_Page_SetFontAndSize (page, font, 30);
+  HPDF_Page_SetFontAndSize (page, font, 20);
 }
 
   /*
@@ -49,7 +49,7 @@ void HaruPDF::placeText(const char* ch, float x, float y, float textAngle, doubl
     // matrix.
     HPDF_Page_SetTextMatrix(page,
                             cos(textAngle), sin(textAngle), -sin(textAngle), cos(textAngle),
-                            radius*x, radius*y);
+                            x, y);
 
     HPDF_Page_ShowText (page, ch);
 }
